@@ -1,0 +1,163 @@
+% ----------------------------------------------------------------------
+% Custom Preamble Package
+% ----------------------------------------------------------------------
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{preamble}[2024/04/27 Custom preamble package]
+
+%--------------------------------%
+%       Package Imports          %
+%--------------------------------%
+
+% Encoding and Fonts
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}  
+\RequirePackage[english]{babel}
+\RequirePackage{mathptmx}    
+\RequirePackage{times}              % Times font (optional, can conflict with mathptmx)
+% Note: Avoid using both 'mathptmx' and 'mathdesign' simultaneously as they can conflict.
+% Uncomment the following line if you prefer Charter fonts via mathdesign.
+% \RequirePackage[charter]{mathdesign} 
+% Page Layout
+\RequirePackage{geometry}
+\geometry{
+    top=2cm,
+    bottom=2cm,
+    left=1in,
+    right=1in,
+    footskip=0.2in
+}
+\RequirePackage{amsmath, amsfonts, amsthm, amssymb, mathrsfs}
+\RequirePackage{bm, xfrac, cancel, mathtools}
+\RequirePackage{breqn}
+\RequirePackage{hyperref}
+\RequirePackage{cleveref}
+\RequirePackage{natbib}
+\bibliographystyle{plainnat}
+\RequirePackage{graphicx}
+\RequirePackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\RequirePackage{tikz}
+\RequirePackage{subfiles}
+\RequirePackage{tikz-cd} 
+\RequirePackage{tkz-euclide}
+\RequirePackage{caption}
+\RequirePackage{subcaption}
+\RequirePackage{wrapfig}
+\RequirePackage{multirow}
+\RequirePackage{booktabs}
+\RequirePackage{import}
+\RequirePackage{pdfpages}
+\RequirePackage{transparent}
+\RequirePackage{float}
+\RequirePackage{enumitem}
+\RequirePackage{booktabs}
+\RequirePackage{multirow}
+\RequirePackage[ruled,vlined,linesnumbered]{algorithm2e}
+\RequirePackage{tcolorbox}
+\RequirePackage{mdframed}
+\RequirePackage{frame}
+\RequirePackage{lipsum}
+\RequirePackage{xcolor}
+% PDF Settings
+\pdfminorversion=7
+%--------------------------------%
+%      Theorem Environments      %
+%--------------------------------%
+\newtheoremstyle{bolditalic}
+  {3pt}                    % Space above
+  {3pt}                    % Space below
+  {\normalfont}            % Body font
+  {}                       % Indent amount
+  {\bfseries\itshape}      % Theorem head font
+  {.}                      % Punctuation after theorem head
+  { }                      % Space after theorem head
+  {}                       % Theorem head spec (can be left empty)
+\theoremstyle{bolditalic}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{claim}{Claim}[section]
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{assumption}{Assumption}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{notation}{Notation}[section]
+\newtheorem*{remark}{Remark}
+\newtheorem*{note}{Note}
+\newtheorem{example}{Example}[section]
+\newtheorem{exercise}{Exercise}[section]
+%--------------------------------%
+%        Custom Commands         %
+%--------------------------------%
+% Paired Delimiters for Easy Scaling
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+% Differential Operators
+\RequirePackage{etoolbox}            % Needed for \ifstrempty
+\RequirePackage{multicol,array}
+\NewDocumentCommand{\dd}{o}{%
+    \ensuremath{\mathop{}\!\ifstrempty{#1}{%
+        \mathrm{d}%
+    }{%
+        \mathrm{d}^{#1}%
+    }}%
+}
+\NewDocumentCommand{\dv}{o m}{%
+    \ensuremath{\frac{\dd^{#1} #2}{\dd #2^{#1}}}%
+}
+
+\NewDocumentCommand{\pdv}{o m m}{%
+    \frac{\partial^{#1} #2}{\partial #3^{#1}}%
+}
+% Mathematical Operators
+\DeclareMathOperator{\Lap}{\mathcal{L}}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\E}{E}
+\DeclareMathOperator{\lb}{lb}
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\csch}{csch}
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclareMathOperator{\arcosh}{arcosh}
+\DeclareMathOperator{\arsinh}{arsinh}
+\DeclareMathOperator{\artanh}{artanh}
+\DeclareMathOperator{\arsech}{arsech}
+\DeclareMathOperator{\arcsch}{arcsch}
+\DeclareMathOperator{\arcoth}{arcoth}
+
+% Shortcuts for Common Symbols
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+    \node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
+\hypersetup{
+    colorlinks,
+    citecolor=blue,
+    filecolor=red,
+    linkcolor=blue,
+    urlcolor=red
+}
+% Paragraph Formatting
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+\usepackage{titlesec}
+\usepackage{comment}
+\usepackage{xifthen}
+\titlespacing*{\section}{0pt}{1.5ex plus .2ex minus .2ex}{1ex plus .2ex}
+\titlespacing*{\subsection}{0pt}{1ex plus .2ex minus .2ex}{0.5ex plus .1ex}
+\pdfsuppresswarningpagegroup=1
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\newcommand\mycommfont[1]{\rmfamily\textcolor{black}{#1}}
+\SetCommentSty{mycommfont}
+\newcommand{\incfig}[1]{%
+    \def\svgwidth{\columnwidth}
+    \import{./figures/}{#1.pdf_tex}
+}
+\SetKwComment{Comment}{\(\triangleright\) }{}
+\makeatletter
+\def\intkern@{\mkern-10mu \mathchoice{\mkern-3mu}{}{}{}}
+\makeatother
