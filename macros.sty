@@ -62,6 +62,7 @@
     (#2) #3
     \end{remark}%
 }
+\newcommand{\remm}[1]{\begin{remark}\setlength{\parindent}{1cm}#1\end{remark}}
 \NewDocumentCommand{\ex}{ O{} m +m }{%
     \begin{exercise}\label{#1}%
     (#2) #3
@@ -72,6 +73,7 @@
     (#2) #3
     \end{example}%
 }
+\newcommand{\egg}[3][]{\begin{example}{\textsf{#2}}{#1}\setlength{\parindent}{1.5em}#3\end{example}}
 \NewDocumentCommand{\prf}{ O{} m +m }{%
     \begin{proof}\label{#1}%
     (#2) #3
