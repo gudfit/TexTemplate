@@ -5,6 +5,13 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{preamble}[2024/04/27 Custom preamble package]
 
+% ----------------------------------------------------------------------
+% General layout
+% ----------------------------------------------------------------------
+\textwidth 6.5in \textheight 9in
+\oddsidemargin 0in \topmargin 0in \headheight 0in \headsep -.25in
+\parskip=1ex \parindent=0pt
+
 %--------------------------------%
 %       Package Imports          %
 %--------------------------------%
@@ -82,10 +89,12 @@
 \newtheorem*{assumption}{Assumption}
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
+\newtheorem{defi}[definition]{Definition}
 \newtheorem{notation}{Notation}[section]
 \newtheorem*{remark}{Remark}
 \newtheorem*{note}{Note}
 \newtheorem{example}{Example}[section]
+\newtheorem{exmp}{Example}
 \newtheorem{exercise}{Exercise}[section]
 %--------------------------------%
 %        Custom Commands         %
@@ -144,6 +153,7 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{1em}
 \usepackage{titlesec}
+\usepackage{esvect}
 \usepackage{comment}
 \usepackage{xifthen}
 \titlespacing*{\section}{0pt}{1.5ex plus .2ex minus .2ex}{1ex plus .2ex}
