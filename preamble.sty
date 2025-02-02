@@ -21,15 +21,15 @@
 \RequirePackage[T1]{fontenc}  
 \RequirePackage[english]{babel}
 \RequirePackage{mathptmx}    
-\RequirePackage{times}              % Times font (optional, can conflict with mathptmx)
+%\RequirePackage{times}              % Times font (optional, can conflict with mathptmx)
 % Note: Avoid using both 'mathptmx' and 'mathdesign' simultaneously as they can conflict.
 % Uncomment the following line if you prefer Charter fonts via mathdesign.
 % \RequirePackage[charter]{mathdesign} 
 % Page Layout
 \RequirePackage{geometry}
 \geometry{
-    top=2cm,
-    bottom=2cm,
+    top=2.5cm,
+    bottom=2.5cm,
     left=1in,
     right=1in,
     footskip=0.2in
@@ -49,6 +49,8 @@
 \RequirePackage{tikz-cd} 
 \RequirePackage{tkz-euclide}
 \RequirePackage{caption}
+\RequirePackage{setspace}
+\RequirePackage{titling}
 \RequirePackage{subcaption}
 \RequirePackage{wrapfig}
 \RequirePackage{multirow}
@@ -87,6 +89,7 @@
 \newtheorem{claim}{Claim}[section]
 \newtheorem*{corollary}{Corollary}
 \newtheorem*{assumption}{Assumption}
+\newtheorem{axiom}{\textcolor{red}{Axiom}}[section]
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
 \newtheorem{defi}[definition]{Definition}
@@ -104,6 +107,9 @@
 \DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 \DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclarePairedDelimiter\parens{(}{)}
+\DeclarePairedDelimiter\brackets{[}{]}
+\DeclarePairedDelimiter\braces{\{}{\}}
 % Differential Operators
 \RequirePackage{etoolbox}            % Needed for \ifstrempty
 \RequirePackage{multicol,array}
